@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AutoGrammar DE - PL</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+<div id="example">
+TEST
+</div>
+
+<h2>Zdanie</h2>
+
+<button type="button" id="get_sentence" data-toggle="modal" data-target="#myModal">generuj</button>
+
+<h3>Czas przeszły</h3>
+
+<label for="depl11"></label>
+<input type="text" id="depl11" value="Przykładowe zdanie po polsku">
+<label for="depl22"></label>
+<input type="text" id="depl22" value="Satz in Deutsch">
+
+<h3>Czas teraźniejszy</h3>
+
+<label for="depl33"></label>
+<input type="text" id="depl33" value="Przykładowe zdanie po polsku">
+<label for="depl44"></label>
+<input type="text" id="depl44" value="Satz in Deutsch">
+
+<h3>Czas przyszły</h3>
+
+<label for="depl55"></label>
+<input type="text" id="depl55" value="Przykładowe zdanie po polsku">
+<label for="depl66"></label>
+<input type="text" id="depl66" value="Satz in Deutsch">
+
+<h2>Słowa</h2>
+
+<textarea name="words" id="words" cols="30" rows="10"></textarea>
+
+<h2>Odmiana</h2>
+<textarea name="words_odmiana" id="words_odmiana" cols="30" rows="10"></textarea>
+
+<h2>Synonimy</h2>
+<textarea name="words_synonimy" id="words_synonimy" cols="30" rows="10"></textarea>
+
+<script type="text/javascript" language="javascript">
+
+    $(document).ready(function () {
+        $("#driver").click(function (event) {
+           // $('#example').load('result.html');
+        });
+        $('#example').load('api/manifest.json');
+
+        $("#get_sentence").click(function (event) {
+
+            console.log("click:get_sentence");
+
+            // Assign handlers immediately after making the request,
+// and remember the jqxhr object for this request
+            var jqxhr = $.getJSON( "api/sentence.json", function(data) {
+
+                console.log(data.sentence);
+                $('#depl11').val(data.sentence.past[0]);
+                $('#depl33').val(data.sentence.future[0]);
+                $('#depl55').val(data.sentence.present[0]);
+                console.log( "success" );
+            })
+                .done(function() {
+                    console.log( "second success" );
+                })
+                .fail(function() {
+                    console.log( "error" );
+                });
+
+            // conjugation.json
+
+            /*
+            $.ajax({
+                dataType: "json",
+                url: 'sentence.json',
+                data: data,
+                success: success
+            });
+
+            console.log(data);
+
+            /*
+            $.getJSON('//localhost:3000/sentence.json', function(jd) {
+                console.log(jd);
+                $('#depl11').value(jd.past);
+                $('#depl33').value(jd.future);
+                $('#depl55').value(jd.present);
+            });
+
+            $.getJSON( "ajax/test.json", function( data ) {
+                var items = [];
+                $.each( data, function( key, val ) {
+                    items.push( "<li id='" + key + "'>" + val + "</li>" );
+                });
+
+                $( "<ul/>", {
+                    "class": "my-new-list",
+                    html: items.join( "" )
+                }).appendTo( "body" );
+            });
+            */
+
+        });
+    });
+</script>
+
+<script>
+    //refresh do kazdego pola 200ms json
+    //"sentence.json"
+
+
+</script>
+
+<table>
+
+</table>
+
+</body>
+</html>

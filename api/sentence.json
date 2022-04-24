@@ -1,0 +1,19 @@
+{
+  "sentence": {
+    "past": [
+      "1Przykładowe zdanie po polsku",
+      "2Przykładowe zdanie po polsku",
+      "Przykładowe zdanie po polsku"
+    ],
+    "present": [
+      "2Przykładowe zdanie po polsku",
+      "3Przykładowe zdanie po polsku",
+      "Przykładowe zdanie po polsku"
+    ],
+    "future": [
+      "3Przykładowe zdanie po polsku",
+      "5Przykładowe zdanie po polsku",
+      "Przykładowe zdanie po polsku"
+    ]
+  }
+}
