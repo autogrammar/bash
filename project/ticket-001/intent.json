@@ -1,10 +1,12 @@
 {
-  "$schema": "../../.governance/intent.schema.json",
   "schema": "new-project.intent/v3",
   "ticket": "ticket-001",
+  "summary": "Adopt wellmanifest/new-project 0.20.35 governance standard",
   "workstream": "governance",
   "classification": {
-    "workType": "standard-adoption"
+    "kind": "SERVICE",
+    "priority": "P2",
+    "origin": "health"
   },
   "allowedPaths": [
     "**"
@@ -61,9 +63,18 @@
     "runtimeDependencies": [],
     "validation": [
       {
-        "command": "bash project/governance-check.sh",
-        "purpose": "Verify governance compliance",
-        "verifies": "governance"
+        "criterion": "AC-01",
+        "commands": [
+          "python3 -c \"import json; json.load(open('.governance/manifest.lock.json'))\""
+        ],
+        "evidence": "Governance adoption lock parses and pins the 0.20.35 standard revision."
+      },
+      {
+        "criterion": "AC-02",
+        "commands": [
+          "bash project/governance-check.sh"
+        ],
+        "evidence": "Governance gate reports GOV-PASS with 0 errors and 0 warnings."
       }
     ]
   }

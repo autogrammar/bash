@@ -112,3 +112,15 @@ dist
 /.subactor/receipts/
 /.subactor/cache/
 /.subactor/snapshots/
+.governance/__pycache__/
+__pycache__/
+*.py[cod]
+project/*.yaml
+project/*.mmd
+project/*.png
+project/*.html
+project/*.export
+project/*.txt
+project/context.md
+project/README.md
+
